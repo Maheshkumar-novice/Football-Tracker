@@ -1,5 +1,12 @@
 # Football Matches Tracker
 
+<img width="1920" height="1080" alt="Screenshot from 2025-11-15 21-09-44" src="https://github.com/user-attachments/assets/922d6eb4-2629-4e76-bc58-08f90170bec1" />
+
+<img width="1920" height="1080" alt="Screenshot from 2025-11-15 22-06-55" src="https://github.com/user-attachments/assets/031bc62e-4d0e-4486-9ad5-aefe0906412e" />
+
+[Screencast from 11-15-2025 10:12:43 PM.webm](https://github.com/user-attachments/assets/92a6f49d-56b2-46df-b6ed-0a1afdcc8419)
+
+
 A lightweight Flask web application that displays recent football match results from the last 7 days across the top 5 European leagues plus the Champions League.
 
 ## Features
