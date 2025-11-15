@@ -13,8 +13,8 @@ class FootballAPIClient:
     # Base URL for the API
     BASE_URL = "https://api.football-data.org/v4"
 
-    # Competition codes for the 5 supported leagues (Free tier)
-    COMPETITION_CODES = ["PL", "PD", "BL1", "SA", "FL1"]
+    # Competition codes for the 6 supported competitions (Free tier)
+    COMPETITION_CODES = ["PL", "PD", "BL1", "SA", "FL1", "CL"]
 
     def __init__(self, api_key):
         """

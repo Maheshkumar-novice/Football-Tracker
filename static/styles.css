@@ -172,6 +172,117 @@ header h1 {
     font-size: 1.1em;
 }
 
+/* Reload Banner */
+#reload-banner {
+    background-color: #17a2b8;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#reload-banner button {
+    background-color: white;
+    color: #17a2b8;
+    border: none;
+    padding: 8px 20px;
+    margin-left: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+#reload-banner button:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-1px);
+}
+
+/* Summary Controls */
+.summary-controls {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Generate Summary Button */
+#generate-summary-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+#generate-summary-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+}
+
+#generate-summary-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Loading Placeholder */
+#summary-loading {
+    color: #6c757d;
+    font-style: italic;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* Error Message */
+#summary-error {
+    color: #dc3545;
+    font-weight: 500;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* Summary Block */
+#summary-block {
+    background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
+    border-left: 5px solid #ffc107;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+/* Summary Text */
+#summary-text {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #1a1a1a;
+    white-space: pre-line;
+    margin-bottom: 15px;
+}
+
+/* Summary Timestamp */
+#summary-timestamp {
+    font-size: 0.85em;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 /* Footer */
 footer {
     text-align: center;

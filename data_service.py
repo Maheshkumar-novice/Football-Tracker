@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 class MatchDataService:
     """Service layer that coordinates API client, data processing, and caching."""
 
-    # Competition codes for the 5 supported leagues
-    COMPETITION_CODES = ["PL", "PD", "BL1", "SA", "FL1"]
+    # Competition codes for the 6 supported competitions
+    COMPETITION_CODES = ["PL", "PD", "BL1", "SA", "FL1", "CL"]
 
     def __init__(self, api_key, cache_ttl=1800):
         """

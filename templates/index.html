@@ -21,6 +21,32 @@
         <p class="last-updated">Last updated: {{ last_updated }}</p>
     </header>
 
+    <!-- Reload banner (shown when new data is available while summary is visible) -->
+    <div id="reload-banner" style="display: none;">
+        <span>New data available — reload now?</span>
+        <button onclick="window.location.reload()">Reload</button>
+    </div>
+
+    <!-- AI Summary Controls -->
+    <div class="summary-controls">
+        <!-- Loading placeholder -->
+        <div id="summary-loading" style="display: none;">
+            Generating summary…
+        </div>
+
+        <!-- Error message -->
+        <div id="summary-error" style="display: none;"></div>
+
+        <!-- Summary display block -->
+        <div id="summary-block" style="display: none;">
+            <div id="summary-text"></div>
+            <div id="summary-timestamp"></div>
+        </div>
+
+        <!-- Generate Summary button -->
+        <button id="generate-summary-btn">Generate Summary</button>
+    </div>
+
     <!-- Main content area -->
     <main>
         {% if competitions %}
