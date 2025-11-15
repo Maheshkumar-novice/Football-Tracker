@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Matches Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Error banner (shown when error flag is true) -->
+    {% if error %}
+    <div class="error-banner">
+        Error fetching match data. Showing cached results.
+    </div>
+    {% endif %}
+
+    <!-- Header section -->
+    <header>
+        <h1>Football Matches Tracker</h1>
+        <p class="subtitle">Recent Results — Last 7 Days</p>
+        <p class="last-updated">Last updated: {{ last_updated }}</p>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+        {% if competitions %}
+            {% for code, matches in competitions.items() %}
+                {% if matches %}
+                <div class="competition-section">
+                    <h2 class="competition-header">▌ {{ matches[0].competition_name }}</h2>
+                    <div class="matches-container">
+                        {% for match in matches %}
+                        <div class="match-row"
+                             onclick="window.open('https://www.google.com/search?q=' + encodeURIComponent('{{ match.google_query }}'), '_blank')"
+                             role="button"
+                             tabindex="0">
+                            <span class="match-date">{{ match.display_date }}</span>
+                            <span class="match-separator">•</span>
+                            <span class="match-teams">{{ match.home_team }} vs {{ match.away_team }}</span>
+                            <span class="match-separator">•</span>
+                            <span class="match-score">{{ match.score_text }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>No matches found in the last 7 days.</p>
+            </div>
+        {% endif %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Data provided by Football-Data.org</p>
+    </footer>
+
+    <!-- JavaScript for auto-refresh -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
