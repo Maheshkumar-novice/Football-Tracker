@@ -1,0 +1,9 @@
+:root {
+    --primary: #15803d;
+    /* Darker Green for better contrast with white text */
+    --surface: #ffffff;
+    --background: #f5f5f5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6c757d;
+    --border: #e9ecef;
+}

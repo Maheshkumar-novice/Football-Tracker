@@ -1,0 +1,38 @@
+<!-- Top Scorers -->
+<div class="section scorers-section">
+    <h3>Top Scorers</h3>
+    {% if scorers and scorers[code] %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th class="text-center">Goals</th>
+                    <th class="text-center">Assists</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in scorers[code] %}
+                <tr>
+                    <td class="rank">{{ loop.index }}</td>
+                    <td class="team">
+                        <div class="team-cell">
+                            <div class="player-info">
+                                <span class="team-name-text">{{ player.player.name }}</span>
+                                <span class="team-name-small" style="font-size: 0.8em; color: #666;">{{ player.team.name
+                                    }}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center"><strong>{{ player.goals }}</strong></td>
+                    <td class="text-center">{{ player.assists or 0 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="no-data">Top scorers data unavailable.</p>
+    {% endif %}
+</div>

@@ -1,0 +1,60 @@
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+.no-data {
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* Responsive Utilities */
+@media (max-width: 600px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Status Colors */
+.status-finished {
+    color: #198754;
+    /* Green */
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.status-live,
+.status-in_play,
+.status-paused {
+    color: #dc3545;
+    /* Red */
+    font-weight: 700;
+    animation: pulse 2s infinite;
+}
+
+.status-scheduled,
+.status-timed {
+    color: #6c757d;
+    /* Grey */
+    font-size: 0.85rem;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

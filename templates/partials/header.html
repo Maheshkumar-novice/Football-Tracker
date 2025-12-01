@@ -1,0 +1,15 @@
+<header class="compact-header">
+    <div class="header-title-group">
+        <h1>Football Tracker</h1>
+        <span class="last-updated">{{ last_updated }}</span>
+    </div>
+
+    {% if enable_ai_summary %}
+    {% endif %}
+</header>
+
+{% if error %}
+<div class="error-banner">
+    <p>⚠️ Unable to fetch fresh data. Showing cached results.</p>
+</div>
+{% endif %}

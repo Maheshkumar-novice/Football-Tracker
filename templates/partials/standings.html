@@ -1,0 +1,52 @@
+<!-- Right Column: Standings -->
+<div id="standings-{{ code }}" class="section standings-section">
+    <div class="standings-header">
+        <h3>League Table</h3>
+        <input class="search" placeholder="Filter teams..." />
+    </div>
+
+    {% if standings and standings[code] %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="sort" data-sort="rank">#</th>
+                    <th class="sort" data-sort="team">Team</th>
+                    <th class="sort" data-sort="played">P</th>
+                    <th class="sort" data-sort="won">W</th>
+                    <th class="sort" data-sort="draw">D</th>
+                    <th class="sort" data-sort="lost">L</th>
+                    <th class="sort hide-mobile" data-sort="gf">GF</th>
+                    <th class="sort hide-mobile" data-sort="ga">GA</th>
+                    <th class="sort hide-mobile" data-sort="gd">GD</th>
+                    <th class="sort" data-sort="points">Pts</th>
+                </tr>
+            </thead>
+            <tbody class="list">
+                {% for team in standings[code] %}
+                <tr>
+                    <td class="rank">{{ team.position }}</td>
+                    <td class="team">
+                        <div class="team-cell">
+                            <img src="{{ team.team.crest }}" alt="" class="team-crest-small"
+                                onerror="this.style.display='none'">
+                            <span class="team-name-text">{{ team.team.name }}</span>
+                        </div>
+                    </td>
+                    <td class="played">{{ team.playedGames }}</td>
+                    <td class="won">{{ team.won }}</td>
+                    <td class="draw">{{ team.draw }}</td>
+                    <td class="lost">{{ team.lost }}</td>
+                    <td class="gf hide-mobile">{{ team.goalsFor }}</td>
+                    <td class="ga hide-mobile">{{ team.goalsAgainst }}</td>
+                    <td class="gd hide-mobile">{{ team.goalDifference }}</td>
+                    <td class="points"><strong>{{ team.points }}</strong></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="no-data">Standings data unavailable.</p>
+    {% endif %}
+</div>

@@ -1,0 +1,175 @@
+/* Tables Global */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 500px;
+}
+
+th {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+th.sort:hover {
+    background: #f8f9fa;
+    color: var(--primary);
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+/* Alignment Rules */
+th:first-child,
+td:first-child {
+    text-align: center;
+}
+
+td:nth-child(2) {
+    text-align: left;
+}
+
+/* Sort Indicators */
+th.sort.asc::after {
+    content: " ▲";
+    font-size: 0.7em;
+}
+
+th.sort.desc::after {
+    content: " ▼";
+    font-size: 0.7em;
+}
+
+/* Team Info */
+.team-info,
+.team-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.team-crest-small {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.team-name-text {
+    font-weight: 500;
+}
+
+/* Matches Specific */
+.match-date {
+    color: #6c757d;
+    font-size: 0.9em;
+    min-width: 90px;
+}
+
+/* Scorers Table */
+.scorers-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.scorers-table th {
+    text-align: left;
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding-bottom: 8px;
+}
+
+.scorers-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.scorers-table tr:last-child td {
+    border-bottom: none;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-name-small {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.goals-col {
+    text-align: right;
+}
+
+.assists {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-left: 4px;
+}
+
+/* Standings Specific */
+.standings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.standings-header h3 {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.search {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.search:focus {
+    border-color: var(--primary);
+}
+
+.points {
+    font-weight: 700;
+    color: var(--primary);
+    background: #f0fff4;
+    border-radius: 4px;
+}
+
+/* Responsive Table Adjustments */
+@media (max-width: 600px) {
+
+    th,
+    td {
+        padding: 8px 4px;
+        /* Reduced padding */
+        font-size: 0.85rem;
+    }
+
+    .team-crest-small {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Ensure table doesn't force scroll if we hide enough columns */
+    table {
+        min-width: auto;
+    }
+}

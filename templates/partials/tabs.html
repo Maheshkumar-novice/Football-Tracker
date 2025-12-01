@@ -1,0 +1,15 @@
+<!-- Tabs Navigation -->
+<div class="tabs">
+    {% for code, matches in competitions.items() %}
+    <button class="tab-btn {% if loop.first %}active{% endif %}" onclick="openTab('{{ code }}')">
+        {% if code == 'PL' %}Premier League
+        {% elif code == 'PD' %}La Liga
+        {% elif code == 'BL1' %}Bundesliga
+        {% elif code == 'SA' %}Serie A
+        {% elif code == 'FL1' %}Ligue 1
+        {% elif code == 'CL' %}Champions League
+        {% else %}{{ code }}
+        {% endif %}
+    </button>
+    {% endfor %}
+</div>

@@ -1,0 +1,51 @@
+<!-- Matches -->
+<div class="section matches-section">
+    <h3>Recent Matches</h3>
+    {% if matches %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th class="text-center">Result</th>
+                    <th class="text-center hide-mobile">Status</th>
+                    <th class="text-center hide-mobile">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for match in matches %}
+                <tr>
+                    <td class="match-date">{{ match.date }}</td>
+                    <td style="text-align: left;">
+                        <div class="team-info">
+                            <img src="{{ match.home_team.crest }}" alt="" class="team-crest-small"
+                                onerror="this.style.display='none'">
+                            <span>{{ match.home_team.name }}</span>
+                        </div>
+                    </td>
+                    <td style="text-align: left;">
+                        <div class="team-info">
+                            <img src="{{ match.away_team.crest }}" alt="" class="team-crest-small"
+                                onerror="this.style.display='none'">
+                            <span>{{ match.away_team.name }}</span>
+                        </div>
+                    </td>
+                    <td class="text-center font-bold">{{ match.score_text }}</td>
+                    <td class="text-center status-{{ match.status|lower }} hide-mobile">{{ match.status }}</td>
+                    <td class="text-center hide-mobile">
+                        <a href="https://www.google.com/search?q={{ match.home_team.name }} vs {{ match.away_team.name }}"
+                            target="_blank" class="btn-link">
+                            Search
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="no-data">No recent matches found.</p>
+    {% endif %}
+</div>

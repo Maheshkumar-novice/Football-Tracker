@@ -21,20 +21,44 @@ def normalize_match(match_data, competition_code=None, competition_name=None):
     try:
         # Extract basic match information
         status = match_data.get('status', 'SCHEDULED')
-        home_team = match_data.get('homeTeam', {}).get('name', 'N/A')
-        away_team = match_data.get('awayTeam', {}).get('name', 'N/A')
+        
+        # Extract rich team data
+        home_team_data = match_data.get('homeTeam', {})
+        away_team_data = match_data.get('awayTeam', {})
+        
+        home_team = {
+            'name': home_team_data.get('name', 'N/A'),
+            'crest': home_team_data.get('crest', '')
+        }
+        away_team = {
+            'name': away_team_data.get('name', 'N/A'),
+            'crest': away_team_data.get('crest', '')
+        }
+        
         utc_kickoff = match_data.get('utcDate', '')
 
         # Format score based on match status
         score_text = _format_score(match_data, status)
+        
+        # Extract raw score data
+        score_data = match_data.get('score', {})
+        full_time = score_data.get('fullTime', {})
+        score = {
+            'full_time': {
+                'home': full_time.get('home'),
+                'away': full_time.get('away')
+            }
+        }
 
         # Build normalized match object
         normalized = {
             'status': status,
             'score_text': score_text,
+            'score': score,
             'home_team': home_team,
             'away_team': away_team,
             'utc_kickoff': utc_kickoff,
+            'date': _format_display_date(utc_kickoff) if utc_kickoff else 'N/A'
         }
 
         # Add competition info if provided or extract from match data
@@ -55,8 +79,7 @@ def normalize_match(match_data, competition_code=None, competition_name=None):
             normalized['display_date'] = 'N/A'
 
         # Create Google search query
-        comp_name = normalized.get('competition_name', '')
-        normalized['google_query'] = f"{comp_name} {home_team} vs {away_team}"
+        normalized['google_query'] = f"{home_team.get('name')} vs {away_team.get('name')}"
 
         return normalized
 
@@ -145,7 +168,9 @@ def group_by_competition(matches):
 
         grouped[comp_code].append(match)
 
-    # Sort matches within each competition by kickoff time (most recent first)
+    # Sort matches within each competition
+    # Priority: 
+    # 1. Kickoff time (Newest first)
     for comp_code in grouped:
         grouped[comp_code].sort(
             key=lambda m: m.get('utc_kickoff', ''),

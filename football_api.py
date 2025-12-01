@@ -113,3 +113,62 @@ class FootballAPIClient:
 
         # Use the existing fetch method with date parameters
         return self.fetch_competition_matches(competition_code, params=params)
+
+    def fetch_top_scorers(self, competition_code, limit=10):
+        """
+        Fetch top scorers for a specific competition.
+
+        Args:
+            competition_code: Competition code (e.g., 'PL', 'PD', 'BL1', 'SA', 'FL1', 'CL')
+            limit: Number of top scorers to fetch (default: 10)
+
+        Returns:
+            dict: JSON response from API, or None on failure
+        """
+        url = f"{self.BASE_URL}/competitions/{competition_code}/scorers"
+        params = {"limit": limit}
+
+        try:
+            logger.info(f"Fetching top {limit} scorers for {competition_code}")
+            response = requests.get(
+                url,
+                headers=self.headers,
+                params=params,
+                timeout=10
+            )
+            response.raise_for_status()
+            
+            logger.info(f"Successfully fetched scorers for {competition_code}")
+            return response.json()
+
+        except Exception as e:
+            logger.error(f"Error fetching scorers for {competition_code}: {e}")
+            return None
+
+    def fetch_standings(self, competition_code):
+        """
+        Fetch standings for a specific competition.
+
+        Args:
+            competition_code: Competition code (e.g., 'PL', 'PD', 'BL1', 'SA', 'FL1', 'CL')
+
+        Returns:
+            dict: JSON response from API, or None on failure
+        """
+        url = f"{self.BASE_URL}/competitions/{competition_code}/standings"
+
+        try:
+            logger.info(f"Fetching standings for {competition_code}")
+            response = requests.get(
+                url,
+                headers=self.headers,
+                timeout=10
+            )
+            response.raise_for_status()
+            
+            logger.info(f"Successfully fetched standings for {competition_code}")
+            return response.json()
+
+        except Exception as e:
+            logger.error(f"Error fetching standings for {competition_code}: {e}")
+            return None
