@@ -14,12 +14,7 @@
     font-weight: 700;
 }
 
-/* Responsive Utilities */
-@media (max-width: 600px) {
-    .hide-mobile {
-        display: none !important;
-    }
-}
+
 
 /* Status Colors */
 .status-finished {

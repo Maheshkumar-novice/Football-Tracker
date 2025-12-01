@@ -16,9 +16,9 @@
                     <th class="sort" data-sort="won">W</th>
                     <th class="sort" data-sort="draw">D</th>
                     <th class="sort" data-sort="lost">L</th>
-                    <th class="sort hide-mobile" data-sort="gf">GF</th>
-                    <th class="sort hide-mobile" data-sort="ga">GA</th>
-                    <th class="sort hide-mobile" data-sort="gd">GD</th>
+                    <th class="sort" data-sort="gf">GF</th>
+                    <th class="sort" data-sort="ga">GA</th>
+                    <th class="sort" data-sort="gd">GD</th>
                     <th class="sort" data-sort="points">Pts</th>
                 </tr>
             </thead>
@@ -37,9 +37,9 @@
                     <td class="won">{{ team.won }}</td>
                     <td class="draw">{{ team.draw }}</td>
                     <td class="lost">{{ team.lost }}</td>
-                    <td class="gf hide-mobile">{{ team.goalsFor }}</td>
-                    <td class="ga hide-mobile">{{ team.goalsAgainst }}</td>
-                    <td class="gd hide-mobile">{{ team.goalDifference }}</td>
+                    <td class="gf">{{ team.goalsFor }}</td>
+                    <td class="ga">{{ team.goalsAgainst }}</td>
+                    <td class="gd">{{ team.goalDifference }}</td>
                     <td class="points"><strong>{{ team.points }}</strong></td>
                 </tr>
                 {% endfor %}

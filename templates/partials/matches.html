@@ -10,8 +10,8 @@
                     <th>Home Team</th>
                     <th>Away Team</th>
                     <th class="text-center">Result</th>
-                    <th class="text-center hide-mobile">Status</th>
-                    <th class="text-center hide-mobile">Link</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Link</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,8 +33,8 @@
                         </div>
                     </td>
                     <td class="text-center font-bold">{{ match.score_text }}</td>
-                    <td class="text-center status-{{ match.status|lower }} hide-mobile">{{ match.status }}</td>
-                    <td class="text-center hide-mobile">
+                    <td class="text-center status-{{ match.status|lower }}">{{ match.status }}</td>
+                    <td class="text-center">
                         <a href="https://www.google.com/search?q={{ match.home_team.name }} vs {{ match.away_team.name }}"
                             target="_blank" class="btn-link">
                             Search

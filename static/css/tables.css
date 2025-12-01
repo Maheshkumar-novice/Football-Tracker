@@ -152,24 +152,3 @@ th.sort.desc::after {
     background: #f0fff4;
     border-radius: 4px;
 }
-
-/* Responsive Table Adjustments */
-@media (max-width: 600px) {
-
-    th,
-    td {
-        padding: 8px 4px;
-        /* Reduced padding */
-        font-size: 0.85rem;
-    }
-
-    .team-crest-small {
-        width: 16px;
-        height: 16px;
-    }
-
-    /* Ensure table doesn't force scroll if we hide enough columns */
-    table {
-        min-width: auto;
-    }
-}
