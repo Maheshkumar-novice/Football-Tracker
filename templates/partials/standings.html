@@ -1,12 +1,11 @@
-<!-- Right Column: Standings -->
-<div id="standings-{{ code }}" class="section standings-section">
+<div id="standings-{{ code }}" class="card">
     <div class="standings-header">
-        <h3>League Table</h3>
-        <input class="search" placeholder="Filter teams..." />
+        <h3 class="card-title">League Table</h3>
+        <input class="search" placeholder="Filter..." />
     </div>
 
     {% if standings and standings[code] %}
-    <div class="table-container">
+    <div class="table-wrap">
         <table>
             <thead>
                 <tr>
@@ -14,33 +13,33 @@
                     <th class="sort" data-sort="team">Team</th>
                     <th class="sort" data-sort="played">P</th>
                     <th class="sort" data-sort="won">W</th>
-                    <th class="sort" data-sort="draw">D</th>
-                    <th class="sort" data-sort="lost">L</th>
-                    <th class="sort" data-sort="gf">GF</th>
-                    <th class="sort" data-sort="ga">GA</th>
-                    <th class="sort" data-sort="gd">GD</th>
+                    <th class="sort hide-mobile-sm" data-sort="draw">D</th>
+                    <th class="sort hide-mobile-sm" data-sort="lost">L</th>
+                    <th class="sort hide-mobile" data-sort="gf">GF</th>
+                    <th class="sort hide-mobile" data-sort="ga">GA</th>
+                    <th class="sort hide-mobile-sm" data-sort="gd">GD</th>
                     <th class="sort" data-sort="points">Pts</th>
                 </tr>
             </thead>
             <tbody class="list">
                 {% for team in standings[code] %}
                 <tr>
-                    <td class="rank">{{ team.position }}</td>
-                    <td class="team">
+                    <td class="rank td-center">{{ team.position }}</td>
+                    <td class="team td-left">
                         <div class="team-cell">
-                            <img src="{{ team.team.crest }}" alt="" class="team-crest-small"
+                            <img src="{{ team.team.crest }}" alt="" class="team-crest"
                                 onerror="this.style.display='none'">
                             <span class="team-name-text">{{ team.team.name }}</span>
                         </div>
                     </td>
-                    <td class="played">{{ team.playedGames }}</td>
-                    <td class="won">{{ team.won }}</td>
-                    <td class="draw">{{ team.draw }}</td>
-                    <td class="lost">{{ team.lost }}</td>
-                    <td class="gf">{{ team.goalsFor }}</td>
-                    <td class="ga">{{ team.goalsAgainst }}</td>
-                    <td class="gd">{{ team.goalDifference }}</td>
-                    <td class="points"><strong>{{ team.points }}</strong></td>
+                    <td class="played td-center">{{ team.playedGames }}</td>
+                    <td class="won td-center">{{ team.won }}</td>
+                    <td class="draw td-center hide-mobile-sm">{{ team.draw }}</td>
+                    <td class="lost td-center hide-mobile-sm">{{ team.lost }}</td>
+                    <td class="gf td-center hide-mobile">{{ team.goalsFor }}</td>
+                    <td class="ga td-center hide-mobile">{{ team.goalsAgainst }}</td>
+                    <td class="gd td-center hide-mobile-sm">{{ team.goalDifference }}</td>
+                    <td class="points td-center"><strong>{{ team.points }}</strong></td>
                 </tr>
                 {% endfor %}
             </tbody>

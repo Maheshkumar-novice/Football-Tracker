@@ -1,248 +1,196 @@
-/* Sections */
-.section {
-    background: var(--surface);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
+/* ── Cards ── */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    transition: border-color var(--duration) var(--ease);
 }
 
-.section h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border);
-    color: var(--text-primary);
+.card:hover {
+    border-color: var(--border-strong);
+}
+
+.card-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+    padding: 0;
+    border: none;
+    display: block;
+}
+
+/* ── Table scroll wrapper ── */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── Standings header ── */
+.standings-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0;
 }
 
-/* Competition sections */
-.competition-section {
-    background-color: white;
-    border-radius: 8px;
-    margin-bottom: 30px;
+.standings-header .card-title {
+    margin-bottom: 0;
+}
+
+.search {
+    padding: 0.35rem 0.65rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    outline: none;
+    transition: border-color var(--duration);
+    width: 120px;
+}
+
+.search:focus {
+    border-color: var(--green-bright);
+}
+
+.search::placeholder {
+    color: var(--text-muted);
+}
+
+/* ── Match mobile cards ── */
+.show-mobile {
+    display: none;
+}
+
+.match-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.match-card {
+    display: block;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: border-color var(--duration);
+}
+
+.match-card:hover {
+    border-color: var(--border-strong);
+}
+
+.match-card-date {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-bottom: 0.4rem;
+}
+
+.match-card-teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.match-card-team {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex: 1;
+    min-width: 0;
+}
+
+.match-card-team span {
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.competition-header {
-    background-color: #f8f9fa;
-    padding: 15px 20px;
-    font-size: 1.4em;
-    font-weight: 600;
-    color: #1a1a1a;
-    border-left: 5px solid #007bff;
-    margin: 0;
+.match-card-team:last-child {
+    justify-content: flex-end;
+    text-align: right;
 }
 
-/* Specific competition colors */
-.competition-section:nth-child(1) .competition-header {
-    border-left-color: #007bff;
+.match-card-score {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    min-width: 3.5rem;
+    text-align: center;
 }
 
-/* PL */
-.competition-section:nth-child(2) .competition-header {
-    border-left-color: #dc3545;
+/* ── Buttons ── */
+.btn-link {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background: var(--bg-glass-hover);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    transition: all var(--duration);
 }
 
-/* PD */
-.competition-section:nth-child(3) .competition-header {
-    border-left-color: #28a745;
+.btn-link:hover {
+    color: var(--green-bright);
+    background: var(--green-glow);
 }
 
-/* BL1 */
-.competition-section:nth-child(4) .competition-header {
-    border-left-color: #17a2b8;
+/* ── No data ── */
+.no-data {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 1.5rem;
+    text-align: center;
 }
 
-/* SA */
-.competition-section:nth-child(5) .competition-header {
-    border-left-color: #ffc107;
-}
-
-/* FL1 */
-
+/* ── Mobile ── */
 @media (max-width: 768px) {
-    .competition-header {
-        font-size: 1.2em;
-        padding: 12px 15px;
+    .card {
+        padding: 1rem;
+        border-radius: var(--radius);
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .show-mobile {
+        display: flex;
     }
 }
 
 @media (max-width: 480px) {
-    .competition-section {
-        margin-bottom: 20px;
+    .card {
+        padding: 0.75rem;
+        border-radius: var(--radius-sm);
     }
-}
 
-/* Buttons */
-.btn-compact {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 6px 16px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
+    .card-title {
+        font-size: 0.6rem;
+        margin-bottom: 0.7rem;
+    }
 
-.btn-compact:hover {
-    background-color: #166534;
-    transform: translateY(-1px);
-}
+    .hide-mobile-sm {
+        display: none !important;
+    }
 
-.btn-compact:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.tab-btn {
-    padding: 10px 20px;
-    border: none;
-    background: var(--surface);
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--text-secondary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
-    transition: all 0.2s;
-}
-
-.tab-btn:hover {
-    background: #e9ecef;
-    color: var(--text-primary);
-}
-
-.tab-btn.active {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-link {
-    display: inline-block;
-    padding: 4px 12px;
-    background-color: #e9ecef;
-    color: #495057;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.btn-link:hover {
-    background-color: #dee2e6;
-    color: #212529;
-}
-
-/* Banners */
-.error-banner {
-    background-color: #dc3545;
-    color: white;
-    padding: 12px 20px;
-    text-align: center;
-    font-weight: 500;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#reload-banner {
-    background-color: #17a2b8;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#reload-banner button {
-    background-color: white;
-    color: #17a2b8;
-    border: none;
-    padding: 8px 20px;
-    margin-left: 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-#reload-banner button:hover {
-    background-color: #f8f9fa;
-    transform: translateY(-1px);
-}
-
-/* AI Summary Section */
-.summary-section {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 25px;
-}
-
-.summary-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.summary-header h2 {
-    margin: 0;
-    color: #15803d;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.summary-header h2::before {
-    content: "⚡";
-}
-
-#summary-text {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #1a1a1a;
-    margin-bottom: 15px;
-}
-
-#summary-text p {
-    margin-bottom: 1rem;
-}
-
-#summary-text strong {
-    color: #d63384;
-    font-weight: 700;
-}
-
-#summary-text hr {
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 1.5rem 0;
-}
-
-#summary-timestamp {
-    font-size: 0.85em;
-    color: #6c757d;
-    font-style: italic;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    .search {
+        width: 80px;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
 }

@@ -3,18 +3,19 @@
 {% block content %}
 {% include 'partials/tabs.html' %}
 
-<!-- Tab Content -->
 {% for code, matches in competitions.items() %}
 <div id="{{ code }}" class="tab-content {% if loop.first %}active{% endif %}">
 
-    <!-- Left Column: Matches & Scorers -->
-    <div class="left-col">
-        {% include 'partials/matches.html' %}
-        {% include 'partials/scorers.html' %}
-    </div>
+    <!-- Matches -->
+    {% include 'partials/matches.html' %}
 
-    <!-- Right Column: Standings -->
-    {% include 'partials/standings.html' %}
+    <div class="two-col">
+        <!-- Scorers -->
+        {% include 'partials/scorers.html' %}
+
+        <!-- Standings -->
+        {% include 'partials/standings.html' %}
+    </div>
 
 </div>
 {% endfor %}

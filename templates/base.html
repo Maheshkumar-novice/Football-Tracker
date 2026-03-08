@@ -4,20 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Matches Tracker</title>
+    <title>Football Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        {% include 'partials/header.html' %}
+    <nav class="topbar">
+        <div class="topbar-brand">
+            <span class="brand-icon">⚽</span>
+            <span class="brand-text">FOOTBALL TRACKER</span>
+        </div>
+        <span class="last-updated">{{ last_updated }}</span>
+    </nav>
 
+    {% if error %}
+    <div class="error-banner">⚠️ Unable to fetch fresh data. Showing cached results.</div>
+    {% endif %}
+
+    <main class="content">
         {% block content %}{% endblock %}
+    </main>
 
-        {% include 'partials/footer.html' %}
-    </div>
+    <footer>
+        <p>Data provided by Football-Data.org</p>
+    </footer>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 

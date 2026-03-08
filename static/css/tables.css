@@ -1,154 +1,180 @@
-/* Tables Global */
-.table-container {
-    overflow-x: auto;
-}
-
+/* ── Tables ── */
 table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    min-width: 500px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.85rem;
 }
 
 th {
-    text-align: center;
-    padding: 10px;
-    border-bottom: 2px solid var(--border);
-    color: var(--text-secondary);
-    font-weight: 600;
-    cursor: pointer;
+    text-align: left;
+    padding: 0.6rem 0.65rem;
+    color: var(--text-muted);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--border-strong);
+    cursor: default;
     user-select: none;
+    white-space: nowrap;
+}
+
+th.sort {
+    cursor: pointer;
+    transition: color var(--duration);
 }
 
 th.sort:hover {
-    background: #f8f9fa;
-    color: var(--primary);
+    color: var(--green-bright);
 }
 
-td {
-    padding: 10px;
-    border-bottom: 1px solid var(--border);
-    text-align: center;
-}
-
-/* Alignment Rules */
-th:first-child,
-td:first-child {
-    text-align: center;
-}
-
-td:nth-child(2) {
-    text-align: left;
-}
-
-/* Sort Indicators */
 th.sort.asc::after {
     content: " ▲";
-    font-size: 0.7em;
+    font-size: 0.55em;
 }
 
 th.sort.desc::after {
     content: " ▼";
-    font-size: 0.7em;
+    font-size: 0.55em;
 }
 
-/* Team Info */
+td {
+    padding: 0.55rem 0.65rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr {
+    transition: background var(--duration) var(--ease);
+}
+
+tr:hover {
+    background: var(--bg-glass-hover);
+}
+
+table.table-compact td {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.82rem;
+}
+
+table.table-compact th {
+    padding: 0.45rem 0.55rem;
+}
+
+/* ── Alignment helpers ── */
+.td-center { text-align: center; }
+.td-left { text-align: left; }
+
+/* ── Team info ── */
 .team-info,
 .team-cell {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
-.team-crest-small {
-    width: 20px;
-    height: 20px;
+.team-crest {
+    width: 18px;
+    height: 18px;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 .team-name-text {
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Matches Specific */
-.match-date {
-    color: #6c757d;
-    font-size: 0.9em;
-    min-width: 90px;
-}
-
-/* Scorers Table */
-.scorers-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-}
-
-.scorers-table th {
-    text-align: left;
-    color: var(--text-secondary);
-    font-weight: 600;
-    padding-bottom: 8px;
-}
-
-.scorers-table td {
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.scorers-table tr:last-child td {
-    border-bottom: none;
-}
-
+/* ── Player info ── */
 .player-info {
     display: flex;
     flex-direction: column;
 }
 
-.team-name-small {
-    font-size: 0.75rem;
+.player-name {
+    font-weight: 500;
+}
+
+.player-team {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* ── Special cells ── */
+.match-date {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     color: var(--text-secondary);
+    white-space: nowrap;
 }
 
-.goals-col {
-    text-align: right;
-}
-
-.assists {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-left: 4px;
-}
-
-/* Standings Specific */
-.standings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.standings-header h3 {
-    margin: 0;
-    border: none;
-    padding: 0;
-}
-
-.search {
-    padding: 6px 12px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    outline: none;
-}
-
-.search:focus {
-    border-color: var(--primary);
-}
-
-.points {
+.rank-cell {
+    font-family: var(--font-mono);
     font-weight: 700;
-    color: var(--primary);
-    background: #f0fff4;
-    border-radius: 4px;
+    color: var(--text-muted);
+}
+
+.goals-cell {
+    color: var(--green-bright);
+}
+
+.points strong {
+    font-family: var(--font-mono);
+    color: var(--green-bright);
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.82rem;
+    }
+
+    th {
+        padding: 0.5rem 0.45rem;
+        font-size: 0.55rem;
+    }
+
+    td {
+        padding: 0.45rem 0.45rem;
+    }
+
+    .team-crest {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 0.78rem;
+    }
+
+    th {
+        padding: 0.4rem 0.35rem;
+        font-size: 0.5rem;
+    }
+
+    td {
+        padding: 0.4rem 0.35rem;
+    }
+
+    .team-crest {
+        width: 14px;
+        height: 14px;
+    }
+
+    .team-info, .team-cell {
+        gap: 0.35rem;
+    }
 }
